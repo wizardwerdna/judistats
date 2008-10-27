@@ -1,0 +1,21 @@
+<% form_for @player do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :screen_name %><br />
+    <%= f.text_field :screen_name %>
+  </p>
+  <p>
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %>
+  </p>
+  <p>
+    <%= f.label :icon %><br />
+    <%= f.text_field :icon %>
+  </p>
+  <p>
+    <%= f.label :updated %><br />
+    <%= f.datetime_select :updated_from_internet_at %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

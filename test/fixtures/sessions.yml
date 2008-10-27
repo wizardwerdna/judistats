@@ -1,0 +1,13 @@
+one:
+  prefix: MyString
+  player: MyString
+  file: MyString
+  mtime: 2008-10-20 16:50:31
+  parsed_at: 2008-10-20 16:50:31
+
+two:
+  prefix: MyString
+  player: MyString
+  file: MyString
+  mtime: 2008-10-20 16:50:31
+  parsed_at: 2008-10-20 16:50:31

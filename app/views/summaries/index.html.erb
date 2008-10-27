@@ -1,0 +1,30 @@
+<% title "Hand File Summaries" %>
+
+<table>
+<% last_ftfile = nil%>
+<% for summary in @summaries %>
+<% if last_ftfile != summary.ftfile.file %>
+</table>
+<br />
+<p><h5><%=h summary.ftfile.file %></h5></p>
+<table border="1pt">
+	<tr>
+	  <th>Screen Name</th>
+	  <th>Poker Edge</th>
+	  <th>Vpip</th>
+	  <th>Pfrp</th>
+	  <th>AF</th>
+	  <th>#</th>
+	</tr>
+<% last_ftfile = summary.ftfile.file %>
+<% end %>
+	<tr>
+	  <td><%=h summary.screen_name %></td>
+	  <td><%=h summary.poker_edge %></td>
+	  <td><%=h "%d%%" % summary.vpip %></td>
+	  <td><%=h "%d%%" % summary.pfrp %></td>
+	  <td><%=h "%2.1f" % summary.pre_agg + "/" + "%2.1f" % summary.post_agg %></td>
+	  <td><%=h summary.hands %></td>
+	</tr>
+<% end %>
+</table>

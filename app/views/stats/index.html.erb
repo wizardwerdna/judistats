@@ -1,0 +1,39 @@
+<% title "Stats" %>
+
+<table>
+  <tr>
+    <th>Session</th>
+    <th>Player</th>
+    <th>Hand</th>
+    <th>Vpip</th>
+    <th>Pfrp</th>
+    <th>Preflop aggressive</th>
+    <th>Preflop Passive</th>
+    <th>Postflop aggressive</th>
+    <th>Postflop Passive</th>
+    <th>Posted</th>
+    <th>Bet</th>
+    <th>Cashed</th>
+  </tr>
+  <% for stat in @stats %>
+    <tr>
+      <td><%=h stat.session_id %></td>
+      <td><%=h stat.player_id %></td>
+      <td><%=h stat.hand %></td>
+      <td><%=h stat.vpip %></td>
+      <td><%=h stat.pfrp %></td>
+      <td><%=h stat.preflop_aggressive %></td>
+      <td><%=h stat.preflop_passive %></td>
+      <td><%=h stat.postflop_aggressive %></td>
+      <td><%=h stat.postflop_passive %></td>
+      <td><%=h stat.posted %></td>
+      <td><%=h stat.bet %></td>
+      <td><%=h stat.cashed %></td>
+      <td><%= link_to "Show", stat %></td>
+      <td><%= link_to "Edit", edit_stat_path(stat) %></td>
+      <td><%= link_to "Destroy", stat, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Stat", new_stat_path %></p>

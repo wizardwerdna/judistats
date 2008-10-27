@@ -1,0 +1,41 @@
+<% form_for @summary do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ftfile_id %><br />
+    <%= f.text_field :ftfile_id %>
+  </p>
+  <p>
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :screen_name %><br />
+    <%= f.text_field :screen_name %>
+  </p>
+  <p>
+    <%= f.label :hands %><br />
+    <%= f.text_field :hands %>
+  </p>
+  <p>
+    <%= f.label :vpip %><br />
+    <%= f.text_field :vpip %>
+  </p>
+  <p>
+    <%= f.label :pfrp %><br />
+    <%= f.text_field :pfrp %>
+  </p>
+  <p>
+    <%= f.label :pre_agg %><br />
+    <%= f.text_field :pre_agg %>
+  </p>
+  <p>
+    <%= f.label :post_agg %><br />
+    <%= f.text_field :post_agg %>
+  </p>
+  <p>
+    <%= f.label :poker_edge %><br />
+    <%= f.text_field :poker_edge %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

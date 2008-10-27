@@ -1,0 +1,27 @@
+<% title "Hands" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Sb</th>
+    <th>Bb</th>
+    <th>Played At</th>
+    <th>Tournament</th>
+  </tr>
+  <% for hand in @hands %>
+    <tr>
+      <td><%=h hand.name %></td>
+      <td><%=h hand.description %></td>
+      <td><%=h hand.sb %></td>
+      <td><%=h hand.bb %></td>
+      <td><%=h hand.played_at %></td>
+      <td><%=h hand.tournament %></td>
+      <td><%= link_to "Show", hand %></td>
+      <td><%= link_to "Edit", edit_hand_path(hand) %></td>
+      <td><%= link_to "Destroy", hand, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Hand", new_hand_path %></p>

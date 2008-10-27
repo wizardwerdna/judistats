@@ -1,0 +1,2 @@
+module HandsHelper
+end

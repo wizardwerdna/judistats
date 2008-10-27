@@ -1,0 +1,21 @@
+one:
+  ftfile_id: 1
+  position: 1
+  screen_name: MyString
+  hands: 1
+  vpip: 1
+  pfrp: 1
+  pre_agg: 1.5
+  post_agg: 1.5
+  poker_edge: MyString
+
+two:
+  ftfile_id: 1
+  position: 1
+  screen_name: MyString
+  hands: 1
+  vpip: 1
+  pfrp: 1
+  pre_agg: 1.5
+  post_agg: 1.5
+  poker_edge: MyString

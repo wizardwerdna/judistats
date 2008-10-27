@@ -1,0 +1,21 @@
+<% title "Ftfiles" %>
+
+<table>
+  <tr>
+    <th>Folder</th>
+    <th>File</th>
+    <th>Mtime</th>
+  </tr>
+  <% for ftfile in @ftfiles %>
+    <tr>
+      <td><%=h ftfile.folder %></td>
+      <td><%=h ftfile.file %></td>
+      <td><%=h ftfile.mtime %></td>
+      <td><%= link_to "Show", ftfile %></td>
+      <td><%= link_to "Edit", edit_ftfile_path(ftfile) %></td>
+      <td><%= link_to "Destroy", ftfile, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Ftfile", new_ftfile_path %></p>

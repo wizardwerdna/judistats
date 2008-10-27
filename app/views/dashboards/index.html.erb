@@ -1,0 +1,38 @@
+<% content_for "head" do %>
+<meta http-equiv="refresh" content="20">
+<% end unless @hands.empty? %>
+
+<% title "Recent Hands" %>
+
+<% for hand in @hands %>
+<h3><%=h hand.description %></h3>
+<h5>Last Hand: <%=h hand.name %> (<%=h time_ago_in_words hand.played_at %> ago)</h5>
+
+<table BORDER="1pt">
+  <tr>
+  <th></th>
+  <th>Player</th>
+  <th>Rating</th>
+  <th>VPI</th>
+  <th>PFR</th>
+  <th>AF</th>
+  </tr>
+  <% for player in hand.players %>
+    <% stats = player.stats.general.first %>
+    <tr>
+    <td><%= image_tag player.icon || "null.png" %></td>
+    <td><%=h player.screen_name %></td>
+    <td><%=h player.rating %></td>
+    <td ALIGN="RIGHT"><%=h as_percentage stats.vpip, stats.number_hands %></td>
+    <td ALIGN="RIGHT"><%=h as_percentage stats.pfrp, stats.number_hands %></td>
+    <td ALIGN="RIGHT"><%=h as_ratio stats.preflop_aggressive, stats.preflop_passive %>/<%=h as_ratio stats.postflop_aggressive, stats.postflop_passive %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% if @hands.empty? %>
+<P>No new hand histories have been generated for at least an hour.</P>
+
+<P>The system stops scanning when no hands are generated in order to preserve resources.  To resume scanning, <%= link_to "Click here", dashboards_path %> after playing a live hand <P>
+<% end %>

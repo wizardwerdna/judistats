@@ -1,0 +1,25 @@
+<% form_for @session do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :prefix %><br />
+    <%= f.text_field :prefix %>
+  </p>
+  <p>
+    <%= f.label :player %><br />
+    <%= f.text_field :player %>
+  </p>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </p>
+  <p>
+    <%= f.label :mtime %><br />
+    <%= f.datetime_select :mtime %>
+  </p>
+  <p>
+    <%= f.label :parsed_at %><br />
+    <%= f.datetime_select :parsed_at %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,53 @@
+<% form_for @stat do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :session_id %><br />
+    <%= f.text_field :session_id %>
+  </p>
+  <p>
+    <%= f.label :player_id %><br />
+    <%= f.text_field :player_id %>
+  </p>
+  <p>
+    <%= f.label :hand %><br />
+    <%= f.text_field :hand %>
+  </p>
+  <p>
+    <%= f.label :vpip %><br />
+    <%= f.text_field :vpip %>
+  </p>
+  <p>
+    <%= f.label :pfrp %><br />
+    <%= f.text_field :pfrp %>
+  </p>
+  <p>
+    <%= f.label :preflop_aggressive %><br />
+    <%= f.text_field :preflop_aggressive %>
+  </p>
+  <p>
+    <%= f.label :preflop_passive %><br />
+    <%= f.text_field :preflop_passive %>
+  </p>
+  <p>
+    <%= f.label :postflop_aggressive %><br />
+    <%= f.text_field :postflop_aggressive %>
+  </p>
+  <p>
+    <%= f.label :postflop_passive %><br />
+    <%= f.text_field :postflop_passive %>
+  </p>
+  <p>
+    <%= f.label :posted %><br />
+    <%= f.text_field :posted %>
+  </p>
+  <p>
+    <%= f.label :bet %><br />
+    <%= f.text_field :bet %>
+  </p>
+  <p>
+    <%= f.label :cashed %><br />
+    <%= f.text_field :cashed %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

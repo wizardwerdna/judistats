@@ -1,0 +1,56 @@
+<% title "Stat" %>
+
+<p>
+  <strong>Session:</strong>
+  <%=h @stat.session_id %>
+</p>
+<p>
+  <strong>Player:</strong>
+  <%=h @stat.player_id %>
+</p>
+<p>
+  <strong>Hand:</strong>
+  <%=h @stat.hand %>
+</p>
+<p>
+  <strong>Vpip:</strong>
+  <%=h @stat.vpip %>
+</p>
+<p>
+  <strong>Pfrp:</strong>
+  <%=h @stat.pfrp %>
+</p>
+<p>
+  <strong>Preflop aggressive:</strong>
+  <%=h @stat.preflop_aggressive %>
+</p>
+<p>
+  <strong>Preflop Passive:</strong>
+  <%=h @stat.preflop_passive %>
+</p>
+<p>
+  <strong>Postflop aggressive:</strong>
+  <%=h @stat.postflop_aggressive %>
+</p>
+<p>
+  <strong>Postflop Passive:</strong>
+  <%=h @stat.postflop_passive %>
+</p>
+<p>
+  <strong>Posted:</strong>
+  <%=h @stat.posted %>
+</p>
+<p>
+  <strong>Bet:</strong>
+  <%=h @stat.bet %>
+</p>
+<p>
+  <strong>Cashed:</strong>
+  <%=h @stat.cashed %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_stat_path(@stat) %> |
+  <%= link_to "Destroy", @stat, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", stats_path %>
+</p>

@@ -1,0 +1,12 @@
+<% title "Dashboard" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @dashboard.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dashboard_path(@dashboard) %> |
+  <%= link_to "Destroy", @dashboard, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dashboards_path %>
+</p>

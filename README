@@ -1,0 +1,7 @@
+Daemon Functions
+
+----------------------------------------------------------------------------------------
+	FileWatcher		monitors file system and assures that new and updated sessions are properly added
+	Parser			monitors sessions and assures that data from sessions are properly migrated (and associated caches are cleared)
+	Poker_Edge		monitors players and assures that data are properly migrated thereto
+----------------------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+<% title "Players" %>
+
+<table>
+  <tr>
+    <th>Screen Name</th>
+    <th>Rating</th>
+    <th>Icon</th>
+    <th>Updated</th>
+  </tr>
+  <% for player in @players %>
+    <tr>
+      <td><IMG SRC="images/<%=player.icon%>"> <%=h player.screen_name %></td>
+      <td><%=h player.rating %></td>
+      <td><%=h player.updated_from_internet_at %></td>
+      <td><%= link_to "Show", player %></td>
+      <td><%= link_to "Edit", edit_player_path(player) %></td>
+      <td><%= link_to "Destroy", player, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Player", new_player_path %></p>

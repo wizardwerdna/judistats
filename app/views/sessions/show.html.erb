@@ -1,0 +1,28 @@
+<% title "Session" %>
+
+<p>
+  <strong>Prefix:</strong>
+  <%=h @session.prefix %>
+</p>
+<p>
+  <strong>Player:</strong>
+  <%=h @session.player %>
+</p>
+<p>
+  <strong>File:</strong>
+  <%=h @session.file %>
+</p>
+<p>
+  <strong>Mtime:</strong>
+  <%=h @session.mtime %>
+</p>
+<p>
+  <strong>Parsed At:</strong>
+  <%=h @session.parsed_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_session_path(@session) %> |
+  <%= link_to "Destroy", @session, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sessions_path %>
+</p>

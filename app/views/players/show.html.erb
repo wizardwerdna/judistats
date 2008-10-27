@@ -1,0 +1,24 @@
+<% title "Player" %>
+
+<p>
+  <strong>Screen Name:</strong>
+  <%=h @player.screen_name %>
+</p>
+<p>
+  <strong>Rating:</strong>
+  <%=h @player.rating %>
+</p>
+<p>
+  <strong>Icon:</strong>
+  <%=h @player.icon %>
+</p>
+<p>
+  <strong>Updated:</strong>
+  <%=h @player.updated_from_internet_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_player_path(@player) %> |
+  <%= link_to "Destroy", @player, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", players_path %>
+</p>

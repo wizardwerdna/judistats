@@ -1,0 +1,32 @@
+<% title "Hand" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @hand.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @hand.description %>
+</p>
+<p>
+  <strong>Sb:</strong>
+  <%=h @hand.sb %>
+</p>
+<p>
+  <strong>Bb:</strong>
+  <%=h @hand.bb %>
+</p>
+<p>
+  <strong>Played At:</strong>
+  <%=h @hand.played_at %>
+</p>
+<p>
+  <strong>Tournament:</strong>
+  <%=h @hand.tournament %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_hand_path(@hand) %> |
+  <%= link_to "Destroy", @hand, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", hands_path %>
+</p>

@@ -1,0 +1,29 @@
+<% form_for @hand do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :sb %><br />
+    <%= f.text_field :sb %>
+  </p>
+  <p>
+    <%= f.label :bb %><br />
+    <%= f.text_field :bb %>
+  </p>
+  <p>
+    <%= f.label :played_at %><br />
+    <%= f.datetime_select :played_at %>
+  </p>
+  <p>
+    <%= f.label :tournament %><br />
+    <%= f.text_field :tournament %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
