@@ -2,3 +2,6 @@ log/*.log
 log/**/*
 tmp/**/*
 db/schema.rb
+db/development.db
+db/production.db
+db/test.db
