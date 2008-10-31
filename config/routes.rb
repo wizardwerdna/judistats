@@ -1,35 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :file_monitors
+
   map.resources :dashboards
 
   map.resources :hands
 
-  map.resources :hands
-
   map.resources :sessions
-
-  map.resources :players
-
-  map.resources :players
 
   map.resources :players
 
   map.resources :stats
-
-  map.resources :sessions
-
-  map.resources :players
-
-  map.resources :summaries
-
-  map.resources :summaries
-
-  map.resources :ftfiles
-
-  map.resources :ftfiles
-
-  map.resources :ftfils
-
-  map.resources :ftfiles
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -43,8 +23,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
-  map.resources :summaries
-
+  
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 

@@ -372,14 +372,18 @@ class FTHandRecord
   def to_s
     "FTHandRecord: #{game}"
   end
-    
-  def stats
+
+  def stats (logger=nil)
     result = []
     players && players.each_with_index do |player, position|
       hand_record = Hand.find_by_name(hand)
       unless hand_record
         hand_record = Hand.create(:name => hand, :description => description, :sb => sb, :bb => bb, :played_at => played_at, :tournament => tournament)
-        puts "creating new Hand: #{hand.inspect}"
+        if logger.nil?
+          puts "judistats/stats: created_at: #{Time.now}; hand: #{hand.inspect}; players: #{players.size}" 
+        else
+          logger.info "judistats/stats: created_at: #{Time.now}; hand: #{hand.inspect}; players: #{players.size}" 
+        end
       end
       result << {
         :hand => hand_record,

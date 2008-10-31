@@ -9,12 +9,16 @@ class Session < ActiveRecord::Base
     end
   end
   
+  named_scope :last5, :order => 'mtime desc', :limit => 5
+  named_scope :unparsed, :conditions => ['parsed_at IS NULL OR mtime >= parsed_at'], :order => 'mtime DESC'
+  named_scope :parsed, :conditions => ['parsed_at IS NOT NULL AND mtime < parsed_at'], :order => 'mtime DESC'
+  
   def last_hand_players
     hands.last.players
   end
 
-  def self.update_from_filesystem(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
-    puts glob
+  def self.update_from_filesystem2(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
+    logger.info "judistats/update_from_filesystem2: #{Time.now}: #{glob}"
     Dir[glob].each do |fd|
       prefix = File.dirname(File.dirname(fd))
       player = File.basename(File.dirname(fd))
@@ -29,8 +33,8 @@ class Session < ActiveRecord::Base
     end
   end
   
-  def self.update_from_filesystem2(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
-    puts glob
+  def self.update_from_filesystem(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
+    logger.info "judistats/update_from_filesystem: #{Time.now}: #{glob}"
     table = {}
     find(:all).collect{|each| table[each.path] = each}
     Dir[glob].each do |fd|
@@ -41,18 +45,15 @@ class Session < ActiveRecord::Base
       unless (fd =~ /Summary.txt$/) || File.directory?(fd)
         if record = table[fd]
           record.update_timestamp
-          puts "record #{record.inspect}" if record.changed?
+          logger.info "judistats/update_from_filesystem: #{Time.now}: updating session mtime for '#{record.file}'" if record.changed?
           record.save
         else
-          create(:prefix => prefix, :player => player, :file => file, :mtime => mtime)
+          record = create(:prefix => prefix, :player => player, :file => file, :mtime => mtime)
+          logger.info "judistats/update_from_filesystem: #{Time.now}: creating session record for '#{record.file}'"
         end
       end
     end
   end
-  
-  named_scope :last5, :order => 'mtime desc', :limit => 5
-  named_scope :unparsed, :conditions => ['parsed_at IS NULL OR mtime >= parsed_at'], :order => 'mtime DESC'
-  named_scope :parsed, :conditions => ['parsed_at IS NOT NULL AND mtime < parsed_at'], :order => 'mtime DESC'
   
   # file descriptor for this ftfile
   def path
@@ -86,13 +87,18 @@ class Session < ActiveRecord::Base
     end
   end
   
-  def self.parse_unparsed_sessions
-    self.unparsed.each do |each|
-      each.stats_from_filesystem
+  def self.update_stats_for_unparsed_sessions_from_filesystem
+    begun_at = Time.now
+    logger.info "judistats/update_stats_for_unparsed_sessions_from_filesystem: begun_at: #{Time.now}"
+    self.unparsed.each_with_index do |each, index|
+      logger.info "judistats/update_stats_from_filesystem: parsed_at #{Time.now}: session: #{each.file}"
+      each.update_stats_from_filesystem
     end
+    completed_at = Time.now
+    logger.info "judistats/update_all_stats_from_filesystem: completed_at: #{completed_at}; elapsed: #{completed_at - begun_at}"
   end
-  
-  def stats_from_filesystem
+
+  def update_stats_from_filesystem
     self.parsed_at = Time.now
     FTFile.open(path).collect{|handrecord| handrecord.stats}.flatten.collect do |each|
       result = stats.find_or_create_by_player_id_and_hand_id(each[:player], each[:hand])

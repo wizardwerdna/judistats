@@ -1,35 +1,55 @@
 <% content_for "head" do %>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="http://dev.jquery.com/view/tags/ui/latest/themes/flora/flora.all.css" type="text/css" media="screen" title="Flora (Default)">
+<script type="text/javascript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js"></script>
+<script type="text/javascript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.tabs.js"></script>
 <meta http-equiv="refresh" content="20">
+<%= javascript_tag <<HERE
+
+$(document).ready(function(){
+  $("#example > ul").tabs();
+});
+
+HERE
+%>
 <% end unless @hands.empty? %>
 
 <% title "Recent Hands" %>
 
-<% for hand in @hands %>
-<h3><%=h hand.description %></h3>
-<h5>Last Hand: <%=h hand.name %> (<%=h time_ago_in_words hand.played_at %> ago)</h5>
+<div id="example" class="flora">
+    <ul>
+    <% @hands.each_with_index do |hand, hand_index| %>
+        <li><a href="#hand-<%= hand_index %>"><span><%= hand.description %></span></a></li>
+    <% end %>
+    </ul>
+    <% @hands.each_with_index do |hand, hand_index| %>
+      <div id="hand-<%= hand_index %>">
+        <h5>Last Hand: <%=h hand.name %> (<%=h time_ago_in_words hand.played_at %> ago)</h5>
 
-<table BORDER="1pt">
-  <tr>
-  <th></th>
-  <th>Player</th>
-  <th>Rating</th>
-  <th>VPI</th>
-  <th>PFR</th>
-  <th>AF</th>
-  </tr>
-  <% for player in hand.players %>
-    <% stats = player.stats.general.first %>
-    <tr>
-    <td><%= image_tag player.icon || "null.png" %></td>
-    <td><%=h player.screen_name %></td>
-    <td><%=h player.rating %></td>
-    <td ALIGN="RIGHT"><%=h as_percentage stats.vpip, stats.number_hands %></td>
-    <td ALIGN="RIGHT"><%=h as_percentage stats.pfrp, stats.number_hands %></td>
-    <td ALIGN="RIGHT"><%=h as_ratio stats.preflop_aggressive, stats.preflop_passive %>/<%=h as_ratio stats.postflop_aggressive, stats.postflop_passive %></td>
-    </tr>
-  <% end %>
-</table>
-<% end %>
+        <table BORDER="1pt">
+          <tr>
+          <th></th>
+          <th>Player</th>
+          <th>Rating</th>
+          <th>VPI</th>
+          <th>PFR</th>
+          <th>AF</th>
+          </tr>
+          <% for player in hand.players %>
+            <% stats = player.stats.general.first %>
+            <tr>
+            <td><%= image_tag player.icon || "null.png" %></td>
+            <td><%=h player.screen_name %></td>
+            <td><%=h player.rating %></td>
+            <td ALIGN="RIGHT"><%=h as_percentage stats.vpip, stats.number_hands %></td>
+            <td ALIGN="RIGHT"><%=h as_percentage stats.pfrp, stats.number_hands %></td>
+            <td ALIGN="RIGHT"><%=h as_ratio stats.preflop_aggressive, stats.preflop_passive %>/<%=h as_ratio stats.postflop_aggressive, stats.postflop_passive %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
+</div>
 
 <% if @hands.empty? %>
 <P>No new hand histories have been generated for at least an hour.</P>

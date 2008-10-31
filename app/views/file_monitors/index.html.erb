@@ -1,0 +1,62 @@
+<% content_for "head" do %>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="http://dev.jquery.com/view/tags/ui/latest/themes/flora/flora.all.css" type="text/css" media="screen" title="Flora (Default)">
+  <script type="text/javascript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js"></script>
+  <script type="text/javascript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.tabs.js"></script>
+<%= javascript_tag <<HERE
+
+$(document).ready(function(){
+  $("#example > ul").tabs();
+});
+
+HERE
+%><% end %>
+
+<% title "File Monitors" %>
+
+<div id="example" class="flora">
+    <ul>
+
+        <li><a href="#fragment-1"><span>One</span></a></li>
+        <li><a href="#fragment-2"><span>Two</span></a></li>
+        <li><a href="#fragment-3"><span>Three</span></a></li>
+    </ul>
+    <div id="fragment-1">
+        <p>First tab is active by default:</p>
+        <pre><code>$('#example > ul').tabs();</code></pre>
+    </div>
+    <div id="fragment-2">
+        Second
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+    <div id="fragment-3">
+        Third
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </div>
+</div>
+
+<% if @file_monitors.empty? %>
+  <H3 background="red">No hand history monitors appear to be running at this time.</H3>
+<% else %>
+<table>
+  <tr>
+  <th>Monitor</th>
+  <th>Status</th>
+  </tr>
+  <% for file_monitor in @file_monitors %>
+    <tr>
+      <td><%=h file_monitor.name %></td>
+      <td style="text-align: center; background-color: <%= file_monitor.status == "up" ? "lightgreen" : "red" %>"><%=h file_monitor.status %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% form_for FileMonitor.new("","") do |f| %>
+  <p><%= f.submit "Restart Monitors" %></p>
+<% end %>
+<p><%= link_to "Terminate Monitors", "/file_monitors/1", :confirm => 'Are you sure you want to stop file monitoring?', :method => :delete %></p>
+
