@@ -1,13 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + "../../../lib/checker/FTFile.rb")
+require File.expand_path(File.dirname(__FILE__) + "../../../lib/checker/PSFile.rb")
 
 class Session < ActiveRecord::Base
   has_many  :stats
   has_many  :players, :through => :stats
-  has_many  :hands, :through => :stats do
-    def last
-      sort{|a, b| b.name <=> a.name}.first
-    end
-  end
+  has_many  :hands
   
   named_scope :last5, :order => 'mtime desc', :limit => 5
   named_scope :unparsed, :conditions => ['parsed_at IS NULL OR mtime >= parsed_at'], :order => 'mtime DESC'
@@ -17,23 +13,8 @@ class Session < ActiveRecord::Base
     hands.last.players
   end
 
-  def self.update_from_filesystem2(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
-    logger.info "judistats/update_from_filesystem2: #{Time.now}: #{glob}"
-    Dir[glob].each do |fd|
-      prefix = File.dirname(File.dirname(fd))
-      player = File.basename(File.dirname(fd))
-      file = File.basename(fd)
-      unless (fd =~ /Summary.txt$/) || File.directory?(fd)
-        record = find(:first, :conditions => ['prefix = ? AND player = ? AND file = ?', prefix, player, file]) || 
-                    new(:prefix => prefix, :player => player, :file => file)
-        record.update_timestamp
-  puts "record #{record.inspect}" if record.changed?
-        record.save
-      end
-    end
-  end
-  
-  def self.update_from_filesystem(glob="/Users/#{`whoami`.chomp}/Documents/HandHistory/**/*")
+  def self.update_from_filesystem(glob="/Users/#{`whoami`.chomp}/Library/Application Support/PokerStars/HandHistory/**/*")
+    puts("update_from_filesystem(#{glob})")
     logger.info "judistats/update_from_filesystem: #{Time.now}: #{glob}"
     table = {}
     find(:all).collect{|each| table[each.path] = each}
@@ -53,6 +34,10 @@ class Session < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def content_at(starting_at = 0)
+    PSFile.open(path).first(starting_at)
   end
   
   # file descriptor for this ftfile
@@ -100,7 +85,7 @@ class Session < ActiveRecord::Base
 
   def update_stats_from_filesystem
     self.parsed_at = Time.now
-    FTFile.open(path).collect{|handrecord| handrecord.stats}.flatten.collect do |each|
+    PSFile.open(path).collect{|handrecord| handrecord.stats}.flatten.collect do |each|
       result = stats.find_or_create_by_player_id_and_hand_id(each[:player], each[:hand])
       result.update_attributes(each)
       result.save

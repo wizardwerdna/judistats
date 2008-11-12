@@ -17,8 +17,16 @@ class Player < ActiveRecord::Base
     logger.warn "judistats/update_all_from_poker_edge: completed_at: #{time_completed}; elapsed: #{time_completed - time_begun}"
   end
   
+  def uri_escaped_screen_name
+    URI.escape(screen_name)
+  end
+  
+  def shell_and_uri_escaped_screen_name
+    uri_escaped_screen_name.gsub(/["']/,'\\\\\&')
+  end
+  
   def update_from_poker_edge
-    result = `curl -s http://www.poker-edge.com/whoami.php?name='#{screen_name.gsub(/ /, "%20")}'`
+    result = `curl -s http://www.poker-edge.com/whoami.php?name=#{shell_and_uri_escaped_screen_name}`
     if result =~ /(Pre-Flop Tend.*\n)/
       verbose = $1.gsub(/<\/?[^>]*>/, "")
       if verbose =~ /Pre-Flop Tendency: ([^-]*) -/

@@ -1,5 +1,11 @@
 <% title "Players" %>
 
+<% form_tag players_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :screen_name => nil %>
+<% end %>
+
 <table>
   <tr>
     <th>Screen Name</th>
@@ -20,3 +26,5 @@
 </table>
 
 <p><%= link_to "New Player", new_player_path %></p>
+
+<%= will_paginate @players %>

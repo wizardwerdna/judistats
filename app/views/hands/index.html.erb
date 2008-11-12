@@ -4,18 +4,22 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Sb</th>
-    <th>Bb</th>
-    <th>Played At</th>
+    <th>Blinds</th>
+    <th>Board</th>
+    <th>Total Pot</th>
+    <th>Total Pot</th>
+    <th>Rake</th>
     <th>Tournament</th>
   </tr>
   <% for hand in @hands %>
     <tr>
       <td><%=h hand.name %></td>
       <td><%=h hand.description %></td>
-      <td><%=h hand.sb %></td>
-      <td><%=h hand.bb %></td>
+      <td><%=h as_money hand.sb, hand.sb %>/<%=h as_money hand.bb, hand.sb %></td>
+      <td><%= as_cards hand.board %></td>
       <td><%=h hand.played_at %></td>
+      <td><%=h as_money hand.total_pot, hand.sb %></td>
+      <td><%=h as_money hand.rake, hand.sb %></td>
       <td><%=h hand.tournament %></td>
       <td><%= link_to "Show", hand %></td>
       <td><%= link_to "Edit", edit_hand_path(hand) %></td>
@@ -25,3 +29,5 @@
 </table>
 
 <p><%= link_to "New Hand", new_hand_path %></p>
+
+<%= will_paginate @hands %>

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-    @sessions = Session.find(:all)
+    @sessions = Session.paginate :page => params[:page], :per_page => 10
   end
   
   def show

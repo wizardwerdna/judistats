@@ -1,6 +1,6 @@
 class StatsController < ApplicationController
   def index
-    @stats = Stat.find(:all)
+    @stats = Stat.paginate :page => params[:page], :per_page => 10
   end
   
   def show

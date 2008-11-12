@@ -1,6 +1,6 @@
 class HandsController < ApplicationController
   def index
-    @hands = Hand.find(:all)
+    @hands = Hand.paginate :page => params[:page], :per_page => 10, :order => 'played_at DESC'
   end
   
   def show

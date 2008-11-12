@@ -52,7 +52,8 @@ HERE
 </div>
 
 <% if @hands.empty? %>
-<P>No new hand histories have been generated for at least an hour.</P>
-
-<P>The system stops scanning when no hands are generated in order to preserve resources.  To resume scanning, <%= link_to "Click here", dashboards_path %> after playing a live hand <P>
+<P>No hand histories have been found for at least fifteen minutes.  This page will stop autorefreshing to preserve system resources.</P>
+<P>To resume autorefreshing, press the refresh key on your browser or <%= link_to "click here", dashboards_path %> a few minutes after playing a live hand <P>
+<P>If you are playing hands and continue to get this message after refreshing, the file monitor may have gone off-line.  
+You can <%= link_to "restart the file monitor server", file_monitors_path %>, but do not do so unless you know what you are doing.<P>
 <% end %>

@@ -26,3 +26,14 @@
   <%= link_to "Destroy", @session, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", sessions_path %>
 </p>
+
+
+<h3>Hands</h3>
+<table>
+<% for hand in session_hands = @session.hands.paginate(:page => params[:page], :per_page => 10) %>
+<tr><td>
+<%=h hand %>
+<td><tr/
+<% end %>
+</table>
+<%= will_paginate session_hands %>

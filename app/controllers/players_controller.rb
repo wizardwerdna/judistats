@@ -2,7 +2,9 @@
 
 class PlayersController < ApplicationController
   def index
-    @players = Player.find(:all)
+    @players = Player.paginate :page => params[:page], :per_page => 10,
+                                :conditions => ['screen_name like ?', "%#{params[:search]}%"],
+                                :order => 'screen_name'
   end
   
   def show

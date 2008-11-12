@@ -9,13 +9,14 @@
   <%=h @hand.description %>
 </p>
 <p>
-  <strong>Sb:</strong>
-  <%=h @hand.sb %>
-</p>
+  <strong>Blinds:</strong>
+  <%=h as_money @hand.sb, @hand.sb %>/
+  <%=h as_money @hand.bb, @hand.sb %>
+</p>  
 <p>
-  <strong>Bb:</strong>
-  <%=h @hand.bb %>
-</p>
+    <strong>Board:</strong>
+    <%=h @hand.board %>
+  </p>
 <p>
   <strong>Played At:</strong>
   <%=h @hand.played_at %>
@@ -30,3 +31,36 @@
   <%= link_to "Destroy", @hand, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", hands_path %>
 </p>
+
+<table>
+<tr>
+<th>Player</th>
+<th>Net</th>
+<th>Posted</th>
+<th>Bet</th>
+<th>Cashed</th>
+<th>vpi</th>
+<th>pfr</th>
+<th>agression</th>
+<tr>
+<% for stat in @hand.stats %>
+<tr>
+<td><%=h stat.player.screen_name %></td>
+<td><%=h as_money stat.cashed - stat.posted - stat.bet, @hand.sb %></td>
+<td><%=h as_money stat.posted, @hand.sb %></td>
+<td><%=h as_money stat.bet, @hand.sb %></td>
+<td><%=h as_money stat.cashed, @hand.sb %></td>
+<td><%=h stat.vpip %></td>
+<td><%=h stat.pfrp %></td>
+<td><%=h "#{stat.preflop_aggressive}:#{stat.preflop_passive}/#{stat.postflop_aggressive}:#{stat.postflop_passive}" %></td>
+</tr>
+<% end %>
+</table>
+
+
+<br>
+<table>
+<% for line in @hand.content.lines %>
+<tr><td><%= line %></td></tr>
+<% end %>
+</pre>

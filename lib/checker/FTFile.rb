@@ -3,7 +3,7 @@ require 'yaml'
 class FTHandRecord
   include Enumerable
   
-  def initialize(lines)
+  def initialize(lines, path=nil, position=0)
     @lines = lines
     @stats = {}
     @noisy = false
@@ -409,28 +409,34 @@ end
 class FTFile
   include Enumerable
   
-  def self.open(filename)
-    new(filename)
+  def self.open(filename, starting_at = 0)
+    new(filename, starting_at)
   end
   
-  def initialize(filename)
-    @filename = filename
+  def initialize(filename, starting_at = 0)
+    @file = File.open(filename)
+    @starting_at = starting_at
+    @file.pos = @starting_at
+    @lastline = @file.readline
   end
-  
-  def each
+
+  def each(starting_at = 0)
     lines = []
     game = nil
     has_handrecord = false
-    File.open(@filename, "r").each do |line|
-      line.chomp!
-      if line =~ /Full Tilt Poker Game #([0-9]+)/
-        yield FTHandRecord.new(lines) if has_handrecord
-        has_handrecord = true
-        lines = [line]
-        game = line
+    File.open(@filename, "r") do |f|
+      f.pos = @starting_at
+      f.each do |line|
+        line.chomp!
+        if line =~ /Full Tilt Poker Game #([0-9]+)/
+          yield FTHandRecord.new(lines) if has_handrecord
+          has_handrecord = true
+          lines = [line]
+          game = line
+        end
+        lines << line unless line.empty?
       end
-      lines << line unless line.empty?
-      end
-    yield FTHandRecord.new(lines) if has_handrecord
+      yield FTHandRecord.new(lines) if has_handrecord
+    end
   end
 end

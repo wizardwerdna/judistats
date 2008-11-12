@@ -7,10 +7,7 @@
     <th>Hand</th>
     <th>Vpip</th>
     <th>Pfrp</th>
-    <th>Preflop aggressive</th>
-    <th>Preflop Passive</th>
-    <th>Postflop aggressive</th>
-    <th>Postflop Passive</th>
+    <th>AF</th>
     <th>Posted</th>
     <th>Bet</th>
     <th>Cashed</th>
@@ -19,13 +16,10 @@
     <tr>
       <td><%=h stat.session_id %></td>
       <td><%=h stat.player_id %></td>
-      <td><%=h stat.hand %></td>
+      <td><%=h stat.hand.name %></td>
       <td><%=h stat.vpip %></td>
       <td><%=h stat.pfrp %></td>
-      <td><%=h stat.preflop_aggressive %></td>
-      <td><%=h stat.preflop_passive %></td>
-      <td><%=h stat.postflop_aggressive %></td>
-      <td><%=h stat.postflop_passive %></td>
+      <td><%=h "#{stat.preflop_aggressive}:#{stat.preflop_passive}/#{stat.postflop_aggressive}:#{stat.postflop_passive}" %></td>
       <td><%=h stat.posted %></td>
       <td><%=h stat.bet %></td>
       <td><%=h stat.cashed %></td>
@@ -37,3 +31,5 @@
 </table>
 
 <p><%= link_to "New Stat", new_stat_path %></p>
+
+<%= will_paginate @stats %>
