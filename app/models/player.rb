@@ -36,7 +36,7 @@ class Player < ActiveRecord::Base
       end
     else
       logger.warn "judistats/update_from_poker_edge: internet data not available for #{screen_name}"
-      raise "internet data unavailable for #{player}"
+      raise "internet data unavailable for #{screen_name}"
     end
     if result =~ /(Player Type.*\n)/
       verbose = $1.gsub(/<\/?[^>]*>/, "")
@@ -47,7 +47,7 @@ class Player < ActiveRecord::Base
       end
     else
       logger.warn "judistats/update_from_poker_edge: internet data not available for #{screen_name}"
-      raise "internet data unavailable for #{player}"
+      raise "internet data unavailable for #{screen_name}"
     end
     self.rating = preflop
     self.rating += " " + player_type unless player_type.empty?
