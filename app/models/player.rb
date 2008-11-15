@@ -36,6 +36,7 @@ class Player < ActiveRecord::Base
       end
     else
       logger.warn "judistats/update_from_poker_edge: internet data not available for #{screen_name}"
+      logger.warn "attempted 'curl -s http://www.poker-edge.com/whoami.php?name=#{shell_and_uri_escaped_screen_name}'"
       raise "internet data unavailable for #{screen_name}"
     end
     if result =~ /(Player Type.*\n)/
