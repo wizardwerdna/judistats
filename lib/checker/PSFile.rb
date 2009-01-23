@@ -1,4 +1,10 @@
+#TODO <RuntimeError: unparseable content in showdown: FRAJI re-buys and receives 3000 chips for $6.00>
+#TODO <RuntimeError: unparseable content in showdown: jackiepackie was removed from the table for failing to post>
+#TODO <RuntimeError: unparseable content in preflop: Shoalwater was removed from the table for failing to post>
+#TODO <RuntimeError: unparseable content in prelude: Seat 8; Sw?z (1425 in chips) >
+
 require 'yaml'
+require File.dirname(__FILE__) + '/../../lib/checker/hand_statistics'
 
 class PSHandRecord
   include Enumerable
@@ -11,12 +17,15 @@ class PSHandRecord
   def self.card_rank char
     CARD_RANK_ORDER.index(char)
   end
+  
   def self.suit_rank char
     SUIT_RANK_ORDER.index(char)
   end
+  
   def self.valid_card? string
     string.size == 2 && card_rank(string.first) && suit_rank(string.last)
   end
+  
   def self.cards_class_string(cards_string)
     card_list = cards_string.split(' ')
     raise "not2cards" unless card_list.size == 2
@@ -33,6 +42,7 @@ class PSHandRecord
     @starting_at = starting_at
     @stats = {}
     @noisy = false
+    @stats[:hand_statistics] = HandStatistics.new.update_hand(:session_filename => path, :starting_at => starting_at)
   end
   
   def lines
@@ -158,6 +168,13 @@ class PSHandRecord
         @stats[:sb] = cash_to_d($6)
         @stats[:bb] = cash_to_d($7)
         @stats[:played_at] = Time.parse("#{$8}")
+        @stats[:hand_statistics].update_hand(
+                        :name => 'PS' + $1, 
+                        :description => $2 + ", " + $3 + " " + $4,
+                        :sb => cash_to_d($6), 
+                        :bb => cash_to_d($7),
+                        :played_at => Time.parse("#{$8}"),
+                        :tournament => $2)
         printf(">> Tournament hand %d; tournament %d; description '%s'; sb = %d; bb = %d; form = %s; played_at = %s\n", 
           @stats[:hand], @stats[:tournament], @stats[:description], @stats[:sb], @stats[:bb], @stats[:form], @stats[:played_at]) if $noisy
         state = :prelude
@@ -173,26 +190,38 @@ class PSHandRecord
         @stats[:sb] = cash_to_d($3)
         @stats[:bb] = cash_to_d($4)
         @stats[:played_at] = Time.parse("#{$5}")
+        @stats[:hand_statistics].update_hand(
+                        :name => 'PS' + $1, 
+                        :description => "#{$2} (#{$3}/#{$4})",
+                        :sb => cash_to_d($3), 
+                        :bb => cash_to_d($4),
+                        :played_at => Time.parse("#{$5}"),
+                        :tournament => nil)
         printf(">> Live Action hand %d; description '%s'; sb = %s; bb = %s; form = %s; played_at = %s\n", 
           @stats[:hand], @stats[:description], @stats[:sb], @stats[:bb], @stats[:form], @stats[:played_at]) if @noisy
         state = :prelude
+        @stats[:hand_statistics].update_hand(:street => :prelude  , :board => $1)
       when /PokerStars Game #([0-9]+):/
         raise "unparseable title line: #{line}"
       when /\*\*\* HOLE CARDS \*\*\*/
         puts "hole: #{line}" if @noisy
         determine_player_positions_from_button
+        @stats[:hand_statistics].update_hand(:street => :preflop, :board => $1)
         state = :preflop
       when /\*\*\* FLOP \*\*\* \[(.*)\]/
         puts "flop (#{$1}): #{line}" if @noisy
         @stats[:board] = $1
+        @stats[:hand_statistics].update_hand(:street => :flop, :board => $1)
         state = :flop
       when /\*\*\* TURN \*\*\* \[([^\]]*)\] \[([^\]]*)\]/
         puts "turn (#{$1}/#{$2}): #{line}" if @noisy
         @stats[:board] = $1 + " " + $2
+        @stats[:hand_statistics].update_hand(:street => :turn, :board => $1 + " " + $2)
         state = :turn
       when /\*\*\* RIVER \*\*\* \[([^\]]*)\] \[([^\]]*)\]/
         puts "river (#{$1}/#{$2}): #{line}" if @noisy
         @stats[:board] = $1 + " " + $2
+        @stats[:hand_statistics].update_hand(:street => :river, :board => $1 + " " + $2)
         state = :river
       when /\*\*\* SHOW DOWN \*\*\*/
         puts "showdown (#{$1}/#{$2}): #{line}" if @noisy
@@ -214,7 +243,7 @@ class PSHandRecord
       puts "prelude: player #{$1}/#{$2}/#{$3}/#{$4}/#{$5}" if @noisy
       @stats[:players] ||= {}
       @stats[:players][$2] = {:seat => $1.to_i}
-      @stats[$2] = []
+      @stats[:hand_statistics].register_player  :screen_name => $2, :seat => $1.to_i, :initial_stack => $3
     # when /(.*): posts((( the)|( a dead))?(( small)|( big))? blind)? (#{CASH})/
     #   puts "prelude: #{$1} posts #{$9}" if @noisy
     #   raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
@@ -227,12 +256,15 @@ class PSHandRecord
       puts "prelude: antes #{$2}" if @noisy
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
       @stats[$1] << {:action => "ante", :result => :post, :amount => cash_to_d($2), :state => state}
+      @stats[:hand_statistics].register_action  $1, state, "ante", :result => :post, :amount => cash_to_d($2)
     when /Table '([0-9]+) ([0-9]+)' (.*) Seat #([0-9]+) is the button/
       puts "prelude: button #{$4} on Tournament Table #{$1}-#{$2} (#{$3})" if @noisy
       @stats[:button] = $4.to_i
+      @stats[:hand_statistics].button = $4.to_i
     when /Table '(.*)' (.*) Seat #([0-9]+) is the button/
       puts "prelude: button #{$3} on Live Action Table #{$1} (#{$2})" if @noisy
       @stats[:button] = $3.to_i
+      @stats[:hand_statistics].button = $3.to_i
     when /(.*) will be allowed to play after the button/
       puts "prelude: #{$1} will be allowed to play after the button" if @noisy
     else
@@ -246,23 +278,27 @@ class PSHandRecord
       raise "icky icky icky" if state != :preflop
       puts "preflop: dealt #{$1}/#{$2}" if @noisy
       @stats[$1] << {:action => "dealt", :result => :cards, :data => $2, :state => state}
+      @stats[:hand_statistics].register_action  $1, state, "dealt", :result => :cards, :data => $2
     when /(.+): ((folds)|(checks))/
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
       @stats[$1] << {:action => $2, :result => :neutral, :amount => "0".to_d, :state => state}
+      @stats[:hand_statistics].register_action  $1, state, $2, :result => :neutral, :amount => "0".to_d
       puts "#{state}: #{$1} #{$2}" if @noisy
     when /(.+): ((calls)|(bets)) ((#{CASH})( and is all-in)?)?$/
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
       @stats[$1] << {:action => $2, :result => :pay, :amount => cash_to_d($6), :state => state}
+      @stats[:hand_statistics].register_action  $1, state, $2, :result => :pay, :amount => cash_to_d($6)
       puts "#{state}: #{$1} #{$2} #{$6}" if @noisy
     when /(.+): raises (#{CASH}) to (#{CASH})( and is all-in)?$/
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
       @stats[$1] << {:action => "raises to", :result => :pay_to, :amount => cash_to_d($3), :state => state}
+      @stats[:hand_statistics].register_action  $1, state, "raises to", :result => :pay_to, :amount => cash_to_d($3)
       puts "#{state}: #{$1} raises #{$2} to #{$3}" if @noisy
     when /Uncalled bet \((.*)\) returned to (.*)/
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$2].nil?
       puts "#{state}: uncalled bet of #{$1} returned to #{$2}" if @noisy
       @stats[$2] << {:action => "return", :result => :win, :amount => cash_to_d($1), :state => state}
-      puts "icky test" if @noisy
+      @stats[:hand_statistics].register_action  $1, state, "return", :result => :win, :amount => cash_to_d($1)
     when   /(.*): doesn't show hand/
       puts "#{state}: #{$1} doesn't show hand" if @noisy
     when   /(.*): mucks hand/
@@ -270,6 +306,7 @@ class PSHandRecord
     when /(.*) collected (.*) from ((side )|(main ))?pot/
       raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
       @stats[$1] << {:action => "wins", :result => :win, :amount => cash_to_d($2), :state => state}
+      @stats[:hand_statistics].register_action  $1, state, "wins", :result => :win, :amount => cash_to_d($2)
       puts "#{state}: #{$1} wins #{$2}" if @noisy
     # when /(.*) ((wins)|(ties for)) (the )?((main )|(side ))?pot (#[0-9] )?\((.*)\)( with (.*))?/
     #   raise "action for non-player: #{line}" if @stats.nil? || @stats[$1].nil?
@@ -277,6 +314,7 @@ class PSHandRecord
     #   puts "#{state}: #{$1} wins #{$10}" if @noisy
     when /(.*): shows \[(.*)\]/
       @stats[$1] << {:action => "shows", :result => :cards, :data => $2, :state => state}
+      @stats[:hand_statistics].register_action  $1, state, "shows", :result => :cards, :data => $2
       puts "#{state}: #{$1}shows [#{$2}]"  if @noisy
     when /(.*): shows (.*)/
       puts "#{state}: #{$1} shows2 #{$2}" if @noisy
@@ -296,6 +334,7 @@ class PSHandRecord
         puts "Total pot=#{$1} | Rake=#{$7}" if @noisy
         @stats[:total_pot] = cash_to_d($1)
         @stats[:rake] = cash_to_d($7)
+        @stats[:hand_statistics].update_hand(:total_pot => cash_to_d($1), :rake => cash_to_d($7))
       when /Seat [0-9]+; (.*) \(((small)|(big)) blind\) folded on the Flop/
       when /Seat [0-9]+; (.*) folded on the ((Flop)|(Turn)|(River))/
       when /Seat [0-9]+; (.*) folded before Flop \(didn't bet\)/
@@ -573,6 +612,9 @@ class PSHandRecord
         :net_in_bb => net(player) / bb
       }
     end
+    puts "stats complete"
+    puts "...Compare #{result[:hand].inspect}"
+    puts "...with #{@stats[:hand_statistics].hand_record.inspect}"
     result
   end
 end

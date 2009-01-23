@@ -3,10 +3,10 @@ class FileMonitorsController < ApplicationController
     @file_monitors = FileMonitor.find(:all)
   end
   
-  def show
-    @file_monitor = FileMonitor.find(params[:id])
-  end
-  
+  # def show
+  #   @file_monitor = FileMonitor.find(params[:id])
+  # end
+  # 
   def new
     @file_monitor = FileMonitor.new
   end

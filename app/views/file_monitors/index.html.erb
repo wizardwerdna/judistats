@@ -22,3 +22,10 @@
 <% end %>
 <p><%= link_to "Terminate Monitors", "/file_monitors/1", :confirm => 'Are you sure you want to stop file monitoring?', :method => :delete %></p>
 
+
+Current Status:
+<table>
+<tr><td>Sessions</td><td><%=Session.unparsed.count%> of <%=Session.count%> need to be parsed</td></tr>
+<tr><td>Hands</td><td><%=Hand.count%> hands have been analyzed.)</td></tr>
+<tr><td>Player</td><td><%=Player.needs_update.count%> of <%=Player.count%> need to be updated</td></tr>
+</table>
