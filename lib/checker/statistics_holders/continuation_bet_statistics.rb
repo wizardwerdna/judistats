@@ -9,11 +9,20 @@ class ContinuationBetStatistics < StatisticsHolder
   end
   
   def cbet_opportunity?(screen_name, street = :flop)
-    @number_preflop_raises==1 && @last_preflop_raiser==screen_name && @first_aggression_opportunity[street][screen_name]
+    # puts "cbet_opportunity?(#{screen_name}, #{street})"
+    # puts @first_aggression_opportunity.inspect
+    @number_preflop_raises==1 && @last_preflop_raiser==screen_name && @first_aggression_opportunity[street] && @first_aggression_opportunity[street][screen_name]
   end
   
   def cbet_opportunity_taken?(screen_name, street = :flop)
     cbet_opportunity?(screen_name) && @first_aggression_opportunity[street][screen_name]
+  end
+  
+  def report(screen_name)
+    {
+      :is_cbet_opportunity => cbet_opportunity?(screen_name),
+      :is_cbet_opportunity_taken => cbet_opportunity_taken?(screen_name)
+    }
   end
   
   def street_transition street

@@ -23,6 +23,15 @@ class BlindAttackStatistics < StatisticsHolder
   def blind_defense_opportunity_taken?(screen_name)
     @blind_defense_opportunity_taken[screen_name]
   end
+  
+  def report(screen_name)
+    {
+      :is_blind_attack_opportunity => blind_attack_opportunity?(screen_name),
+      :is_blind_attack_opportunity_taken => blind_attack_opportunity_taken?(screen_name),
+      :is_blind_defense_opportunity => blind_defense_opportunity?(screen_name),
+      :is_blind_defense_opportunity_taken => blind_defense_opportunity_taken?(screen_name)
+    }
+  end
       
   def apply_action action, street
     player = action[:screen_name]

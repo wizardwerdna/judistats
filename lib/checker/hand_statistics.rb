@@ -1,9 +1,9 @@
 require 'Forwardable'
 require File.expand_path(File.dirname(__FILE__) + "/hand_constants")
 
-
 class HandStatistics
   extend Forwardable
+  include HandConstants
   
   require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/statistics_holder")
   require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/blind_attack_statistics")
@@ -13,7 +13,7 @@ class HandStatistics
   require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/aggression_statistics")
     
   attr_accessor :button
-  attr_reader :player_hashes, :actions
+  attr_reader :player_hashes, :statistics_holders
 
   def_delegators :@blind_attack_statistics_holder,
     :blind_attack_opportunity?, :blind_attack_opportunity_taken?, :blind_defense_opportunity?, :blind_defense_opportunity_taken?
@@ -21,14 +21,50 @@ class HandStatistics
   def_delegators :@cash_statistics_holder, :posted, :paid, :won, :cards
   def_delegators :@aggression_statistics_holder, :preflop_passive, :preflop_aggressive, :postflop_passive, :postflop_aggressive
   def_delegators :@preflop_raise_statistics_holder, :pfr_opportunity?, :pfr_opportunity_taken?
-        
+
   def initialize
     @hand_information = {}
-    @player_information = {}
-    @player_data = {}
-    @actions = []
     @player_hashes = []
+    @position = {}
     initialize_statistics
+  end
+  
+  def b value
+    if value.nil?
+      return "?"
+    elsif value
+      return "t"
+    else
+      return "."
+    end
+  end
+  
+  def debug_display
+    reports = self.reports
+    print_report_header
+    players.each do |each|
+      print_report(each, reports[each])
+    end
+  end
+  
+  def print_report_header
+    puts("                                                    |pre|pos|pfr|bat|bdf|cbt|\n")
+    puts("                                                    |---+---|-+-|-+-|-+-|-+-|\n")
+    puts("                                                    |a|p|a|p|o|t|o|t|o|t|o|t|\n")
+    puts("                                                    |g|a|g|a|p|k|p|k|p|k|p|k|\n")
+    puts("screenname     |posted  |paid    |won     |cards    |g|s|g|s|t|n|t|n|t|n|t|n|\n")
+    puts("---------------+--------+--------+--------+---------|-+-|-+-|-+-|-+-|-+-|-+-|\n")
+  end
+  
+  def print_report(screen_name, data)
+    printf("%-15s|%8.2d|%8.2d|%8.2d|%9s|%1d|%1d|%1d|%1d|%1s|%1s|%1s|%1s|%1s|%1s|%1s|%1s|%d\n",
+      screen_name, data[:posted], data[:paid], data[:won], data[:cards], 
+      data[:preflop_aggressive], data[:preflop_passive], data[:postflop_aggressive], data[:postflop_passive],
+      b(data[:is_pfr_opportunity]), b(data[:is_pfr_opportunity_taken]),
+      b(data[:is_blind_attack_opportunity]), b(data[:is_blind_attack_opportunity_taken]), 
+      b(data[:is_blind_defense_opportunity]), b(data[:is_blind_defense_opportunity_taken]),
+      b(data[:is_cbet_opportunity]), b(data[:is_cbet_opportunity_taken]), position(screen_name)
+    )
   end
   
   def players
@@ -39,14 +75,23 @@ class HandStatistics
     @street
   end
   
+  def report(player)
+    result = {}
+    @statistics_holders.each {|each| result.merge!(each.report(player))}
+    result
+  end
+  
+  def reports
+    result = {}
+    players.each{|each| result[each] = report(each)}
+    result
+  end
+  
   def register_player(player)
     screen_name = player[:screen_name]
     raise "#{PLAYER_RECORDS_DUPLICATE_PLAYER_NAME}: #{screen_name.inspect}" if players.member?(screen_name)
     @player_hashes << player
-    player_data = @player_data[screen_name] = {}
-    player_data[:pfr_opportunity] = nil
-    [:posted, :paid, :paid_this_round, :won, :preflop_passive, :preflop_aggressive, :postflop_passive, :postflop_aggressive].each{|each| player_data[each] = 0}
-    [:cards].each{|each| player_data[each] = nil}
+    @position[screen_name] = nil
     @statistics_holders.each {|each| each.register_player(screen_name, @street)}
     street_transition_for_player(@street, screen_name)
   end
@@ -60,7 +105,7 @@ class HandStatistics
     return true if @player_hashes.empty?
     @player_hashes.sort!{|a,b| button_relative_seat(a) <=> button_relative_seat(b)}
     @player_hashes = [@player_hashes.pop] + @player_hashes unless @player_hashes.first[:seat] == @button
-    @player_hashes.each_with_index{|player, index| player[:position] = index, @player_data[player[:screen_name]][:position] = index}
+    @player_hashes.each_with_index{|player, index| player[:position] = index, @position[player[:screen_name]] = index}
   end
   
   def hand_record
@@ -98,11 +143,11 @@ class HandStatistics
   end
   
   def number_players
-    @player_data.size
+    @player_hashes.size
   end
   
   def position(screen_name)
-    @player_data[screen_name][:position]
+    @position[screen_name]
   end
   
   def cutoff_position
@@ -175,11 +220,11 @@ class HandStatistics
   end
 
   def street_transition_for_player(street, player)
+    # puts "street transition for player #{player} to #{street}"
     @statistics_holders.each {|each| each.street_transition_for_player(street, player)}
   end
   
   def apply_action(action)
-    @actions << action
     @statistics_holders.each {|each| each.apply_action action, @street}
   end
 end

@@ -12,10 +12,18 @@ class PreflopRaiseStatistics < StatisticsHolder
   end
   
   def pfr_opportunity_taken?(screen_name)
-    pfr_opportunity?(screen_name) && @pfr_opportunity_taken[screen_name]
+    @pfr_opportunity[screen_name] && @pfr_opportunity_taken[screen_name]
+  end
+  
+  def report screen_name
+    {
+      :is_pfr_opportunity => pfr_opportunity?(screen_name),
+      :is_pfr_opportunity_taken => pfr_opportunity_taken?(screen_name)
+    }
   end
   
   def apply_action action, street
+    # puts "pfr: apply_action #{street}, #{action.inspect}"
     result = action[:result]
     player = action[:screen_name]
     if street == :preflop and [:pay, :pay_to, :neutral].member?(result) and @pfr_opportunity[player].nil?

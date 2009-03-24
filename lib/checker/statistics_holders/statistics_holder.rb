@@ -3,6 +3,10 @@ class StatisticsHolder
     @hand_statistics = handstatistics
   end
   
+  def report(screen_name)
+    {}
+  end
+  
   def register_player screen_name, street
   end
   

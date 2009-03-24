@@ -7,7 +7,7 @@ class AggressionStatistics < StatisticsHolder
     @postflop_passive = {}
     @postflop_aggressive = {}
   end
-  
+    
   def preflop_passive(screen_name)
     @preflop_passive[screen_name]
   end
@@ -22,6 +22,15 @@ class AggressionStatistics < StatisticsHolder
   
   def postflop_aggressive(screen_name)
     @postflop_aggressive[screen_name]
+  end
+  
+  def report screen_name
+    {
+      :preflop_passive => preflop_passive(screen_name),
+      :postflop_passive => postflop_passive(screen_name),
+      :preflop_aggressive => preflop_aggressive(screen_name),
+      :postflop_aggressive => postflop_aggressive(screen_name)
+    }
   end
 
   def register_player screen_name, street
