@@ -9,7 +9,9 @@ class PokerEdge
   end
   
   def get_response_from_internet
-    open("http://www.poker-edge.com/whoami.php?name=badbeat_brat") do |f|
+    url = "http://www.poker-edge.com/whoami.php?name=#{@screen_name}"
+    puts url
+    open(url) do |f|
       @response = f.read
     end
     @response
@@ -41,5 +43,13 @@ class PokerEdge
       end
     end
     player
+  end
+  
+  def report format = "%20s -- %s -- %s\n"
+    open("foo.html", "w+") do |file|
+      file.write(response)
+    end
+    `open foo.html`
+    printf(format, @screen_name, preflop_style, player_type)
   end
 end

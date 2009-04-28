@@ -1,0 +1,473 @@
+Stage #1323644698: Holdem  No Limit $0.50 - 2009-03-20 11:18:48 (ET)
+Table: Seven Mile (Real Money) Seat #1 is the dealer
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($40.17 in chips)
+Seat 3 - TUMTUM972 ($53.90 in chips)
+Seat 4 - AIDANMYSON ($55.82 in chips)
+Seat 5 - OSCARFISH21 ($20.50 in chips)
+Seat 6 - XCENTRICITY ($48.40 in chips)
+Seat 7 - IONABILL ($103.90 in chips)
+Seat 8 - LAVIZ ($24.93 in chips)
+Seat 9 - POKR_WIZ ($100 in chips)
+XEXPO - Posts small blind $0.25
+TUMTUM972 - Posts big blind $0.50
+POKR_WIZ - Posts $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [7d Kh] 
+AIDANMYSON - Folds
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Folds
+POKR_WIZ - Checks
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Checks
+*** FLOP *** [8s Js Kc]
+TUMTUM972 - Checks
+POKR_WIZ - Bets $0.50
+TUMTUM972 - Folds
+POKR_WIZ - returned ($0.50) : not called
+*** SHOW DOWN ***
+POKR_WIZ - Does not show
+POKR_WIZ Collects $1.20 from main pot
+*** SUMMARY ***
+Total Pot($1.25) | Rake ($0.05)
+Board [8s Js Kc]
+Seat 1: MAGELA_ (dealer) Folded on the POCKET CARDS
+Seat 2: XEXPO (small blind) Folded on the POCKET CARDS
+Seat 3: TUMTUM972 (big blind) Folded on the FLOP
+Seat 4: AIDANMYSON Folded on the POCKET CARDS
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL Folded on the POCKET CARDS
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ collected Total ($1.20) HI:($1.20)  [Does not show] 
+
+
+Stage #1323645475: Holdem  No Limit $0.50 - 2009-03-20 11:19:25 (ET)
+Table: Seven Mile (Real Money) Seat #2 is the dealer
+Seat 2 - XEXPO ($39.92 in chips)
+Seat 3 - TUMTUM972 ($53.40 in chips)
+Seat 4 - AIDANMYSON ($55.82 in chips)
+Seat 5 - OSCARFISH21 ($20.50 in chips)
+Seat 6 - XCENTRICITY ($48.40 in chips)
+Seat 7 - IONABILL ($103.90 in chips)
+Seat 8 - LAVIZ ($24.93 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+TUMTUM972 - Posts small blind $0.25
+AIDANMYSON - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [5d Qd] 
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Calls $0.50
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Calls $0.50
+TUMTUM972 - Folds
+AIDANMYSON - Checks
+*** FLOP *** [6s Js 9d]
+AIDANMYSON - Checks
+LAVIZ - Bets $1
+XEXPO - Calls $1
+AIDANMYSON - Folds
+*** TURN *** [6s Js 9d] [Qs]
+LAVIZ - Checks
+XEXPO - Checks
+*** RIVER *** [6s Js 9d Qs] [7c]
+LAVIZ - Bets $3
+XEXPO - Calls $3
+*** SHOW DOWN ***
+LAVIZ - Shows [10d 7d] (One pair, sevens) 
+XEXPO - Shows [5s 4s] (Flush, queen high) 
+XEXPO Collects $8.80 from main pot
+*** SUMMARY ***
+Total Pot($9.75) | Rake ($0.45) | Jackpot Rake ($0.50)
+Board [6s Js 9d Qs 7c]
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO (dealer) won Total ($8.80) HI:($8.80) with Flush, queen high [5s 4s - B:Qs,B:Js,B:6s,P:5s,P:4s] 
+Seat 3: TUMTUM972 (small blind) Folded on the POCKET CARDS
+Seat 4: AIDANMYSON (big blind) Folded on the FLOP
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL Folded on the POCKET CARDS
+Seat 8: LAVIZ HI:lost with One pair, sevens [10d 7d - P:7d,B:7c,B:Qs,B:Js,P:10d] 
+Seat 9: POKR_WIZ Folded on the POCKET CARDS
+
+
+Stage #1323647651: Holdem  No Limit $0.50 - 2009-03-20 11:21:05 (ET)
+Table: Seven Mile (Real Money) Seat #3 is the dealer
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($55.32 in chips)
+Seat 5 - OSCARFISH21 ($20.50 in chips)
+Seat 6 - XCENTRICITY ($48.40 in chips)
+Seat 7 - IONABILL ($103.90 in chips)
+Seat 8 - LAVIZ ($20.43 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($44.22 in chips)
+AIDANMYSON - Posts small blind $0.25
+OSCARFISH21 - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [5h 8s] 
+XCENTRICITY - Folds
+IONABILL - Raises $1.75 to $1.75
+LAVIZ - Folds
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Folds
+AIDANMYSON - Calls $1.50
+OSCARFISH21 - Folds
+*** FLOP *** [7s 6h Ac]
+AIDANMYSON - Checks
+IONABILL - Bets $2
+AIDANMYSON - Raises $10 to $10
+IONABILL - Folds
+AIDANMYSON - returned ($8) : not called
+*** SHOW DOWN ***
+AIDANMYSON - Does not show
+AIDANMYSON Collects $7.10 from main pot
+*** SUMMARY ***
+Total Pot($8) | Rake ($0.40) | Jackpot Rake ($0.50)
+Board [7s 6h Ac]
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 (dealer) Folded on the POCKET CARDS
+Seat 4: AIDANMYSON (small blind) collected Total ($7.10) HI:($7.10)  [Does not show] 
+Seat 5: OSCARFISH21 (big blind) Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL Folded on the FLOP
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ Folded on the POCKET CARDS
+
+
+Stage #1323649024: Holdem  No Limit $0.50 - 2009-03-20 11:22:09 (ET)
+Table: Seven Mile (Real Money) Seat #4 is the dealer
+Seat 4 - AIDANMYSON ($58.67 in chips)
+Seat 5 - OSCARFISH21 ($20 in chips)
+Seat 6 - XCENTRICITY ($48.40 in chips)
+Seat 7 - IONABILL ($100.15 in chips)
+Seat 8 - LAVIZ ($20.43 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($44.22 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+OSCARFISH21 - Posts small blind $0.25
+XCENTRICITY - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [Jc 2c] 
+IONABILL - Raises $1.50 to $1.50
+LAVIZ - Folds
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Folds
+AIDANMYSON - Calls $1.50
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+*** FLOP *** [Kc 9s 7c]
+IONABILL - Bets $2
+AIDANMYSON - Folds
+IONABILL - returned ($2) : not called
+*** SHOW DOWN ***
+IONABILL - Does not show
+IONABILL Collects $3.60 from main pot
+*** SUMMARY ***
+Total Pot($3.75) | Rake ($0.15)
+Board [Kc 9s 7c]
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 Folded on the POCKET CARDS
+Seat 4: AIDANMYSON (dealer) Folded on the FLOP
+Seat 5: OSCARFISH21 (small blind) Folded on the POCKET CARDS
+Seat 6: XCENTRICITY (big blind) Folded on the POCKET CARDS
+Seat 7: IONABILL collected Total ($3.60) HI:($3.60)  [Does not show] 
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ Folded on the POCKET CARDS
+
+
+Stage #1323649771: Holdem  No Limit $0.50 - 2009-03-20 11:22:44 (ET)
+Table: Seven Mile (Real Money) Seat #5 is the dealer
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+Seat 6 - XCENTRICITY ($47.90 in chips)
+Seat 7 - IONABILL ($102.25 in chips)
+Seat 8 - LAVIZ ($20.43 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($44.22 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($57.17 in chips)
+XCENTRICITY - Posts small blind $0.25
+IONABILL - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [5s 6h] 
+LAVIZ - Calls $0.50
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Calls $0.50
+TUMTUM972 - Folds
+AIDANMYSON - Raises $2.75 to $2.75
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Folds
+XEXPO - Folds
+AIDANMYSON - returned ($2.25) : not called
+*** SHOW DOWN ***
+AIDANMYSON - Does not show
+AIDANMYSON Collects $2.25 from main pot
+*** SUMMARY ***
+Total Pot($2.25)
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 Folded on the POCKET CARDS
+Seat 4: AIDANMYSON collected Total ($2.25) 
+Seat 5: OSCARFISH21 (dealer) Folded on the POCKET CARDS
+Seat 6: XCENTRICITY (small blind) Folded on the POCKET CARDS
+Seat 7: IONABILL (big blind) Folded on the POCKET CARDS
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ Folded on the POCKET CARDS
+
+
+Stage #1323650518: Holdem  No Limit $0.50 - 2009-03-20 11:23:18 (ET)
+Table: Seven Mile (Real Money) Seat #6 is the dealer
+Seat 6 - XCENTRICITY ($47.65 in chips)
+Seat 7 - IONABILL ($101.75 in chips)
+Seat 8 - LAVIZ ($19.93 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($43.72 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($58.92 in chips)
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+IONABILL - Posts small blind $0.25
+LAVIZ - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [8c 7s] 
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Folds
+AIDANMYSON - Folds
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+*** SHOW DOWN ***
+LAVIZ - Does not show
+LAVIZ Collects $0.75 from main pot
+*** SUMMARY ***
+Total Pot($0.75)
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 Folded on the POCKET CARDS
+Seat 4: AIDANMYSON Folded on the POCKET CARDS
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY (dealer) Folded on the POCKET CARDS
+Seat 7: IONABILL (small blind) Folded on the POCKET CARDS
+Seat 8: LAVIZ (big blind) collected Total ($0.75) 
+Seat 9: POKR_WIZ Folded on the POCKET CARDS
+
+
+Stage #1323650958: Holdem  No Limit $0.50 - 2009-03-20 11:23:39 (ET)
+Table: Seven Mile (Real Money) Seat #7 is the dealer
+Seat 7 - IONABILL ($101.50 in chips)
+Seat 8 - LAVIZ ($20.18 in chips)
+Seat 9 - POKR_WIZ ($100.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($43.72 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($58.92 in chips)
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+Seat 6 - XCENTRICITY ($47.65 in chips)
+LAVIZ - Posts small blind $0.25
+POKR_WIZ - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [5s 5d] 
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Folds
+AIDANMYSON - Raises $1.50 to $1.50
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Calls $1.25
+POKR_WIZ - Calls $1
+*** FLOP *** [Qs 3c 3s]
+LAVIZ - Checks
+POKR_WIZ - Bets $0.50
+AIDANMYSON - Folds
+LAVIZ - Calls $0.50
+*** TURN *** [Qs 3c 3s] [7c]
+LAVIZ - Checks
+POKR_WIZ - Bets $2
+LAVIZ - Calls $2
+*** RIVER *** [Qs 3c 3s 7c] [Jc]
+LAVIZ - Checks
+POKR_WIZ - Checks
+*** SHOW DOWN ***
+LAVIZ - Shows [6s 6h] (Two Pair, sixes and threes) 
+POKR_WIZ - Mucks
+LAVIZ Collects $8.55 from main pot
+*** SUMMARY ***
+Total Pot($9.50) | Rake ($0.45) | Jackpot Rake ($0.50)
+Board [Qs 3c 3s 7c Jc]
+Seat 1: MAGELA_ Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 Folded on the POCKET CARDS
+Seat 4: AIDANMYSON Folded on the FLOP
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL (dealer) Folded on the POCKET CARDS
+Seat 8: LAVIZ (small blind) won Total ($8.55) HI:($8.55) with Two Pair, sixes and threes [6s 6h - P:6s,P:6h,B:3s,B:3c,B:Qs] 
+Seat 9: POKR_WIZ (big blind) HI: [Mucked] [5s 5d] 
+
+
+Stage #1323653142: Holdem  No Limit $0.50 - 2009-03-20 11:25:21 (ET)
+Table: Seven Mile (Real Money) Seat #8 is the dealer
+Seat 8 - LAVIZ ($24.73 in chips)
+Seat 9 - POKR_WIZ ($96.70 in chips)
+Seat 1 - MAGELA_ ($11.95 in chips)
+Seat 2 - XEXPO ($43.72 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($57.42 in chips)
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+Seat 6 - XCENTRICITY ($47.65 in chips)
+Seat 7 - IONABILL ($101.50 in chips)
+POKR_WIZ - Posts small blind $0.25
+MAGELA_ - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [9h 5d] 
+XEXPO - Folds
+TUMTUM972 - Folds
+AIDANMYSON - Folds
+OSCARFISH21 - Folds
+XCENTRICITY - Raises $1.75 to $1.75
+IONABILL - Calls $1.75
+LAVIZ - Folds
+POKR_WIZ - Folds
+MAGELA_ - Folds
+*** FLOP *** [9s 10h 7h]
+XCENTRICITY - Bets $3
+IONABILL - Calls $3
+*** TURN *** [9s 10h 7h] [8d]
+XCENTRICITY - Checks
+IONABILL - Bets $6
+XCENTRICITY - Folds
+IONABILL - returned ($6) : not called
+*** SHOW DOWN ***
+IONABILL - Does not show
+IONABILL Collects $9.25 from main pot
+*** SUMMARY ***
+Total Pot($10.25) | Rake ($0.50) | Jackpot Rake ($0.50)
+Board [9s 10h 7h 8d]
+Seat 1: MAGELA_ (big blind) Folded on the POCKET CARDS
+Seat 2: XEXPO Folded on the POCKET CARDS
+Seat 3: TUMTUM972 Folded on the POCKET CARDS
+Seat 4: AIDANMYSON Folded on the POCKET CARDS
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the TURN
+Seat 7: IONABILL collected Total ($9.25) HI:($9.25)  [Does not show] 
+Seat 8: LAVIZ (dealer) Folded on the POCKET CARDS
+Seat 9: POKR_WIZ (small blind) Folded on the POCKET CARDS
+
+
+Stage #1323654200: Holdem  No Limit $0.50 - 2009-03-20 11:26:11 (ET)
+Table: Seven Mile (Real Money) Seat #9 is the dealer
+Seat 9 - POKR_WIZ ($96.45 in chips)
+Seat 1 - MAGELA_ ($11.45 in chips)
+Seat 2 - XEXPO ($43.72 in chips)
+Seat 3 - TUMTUM972 ($53.15 in chips)
+Seat 4 - AIDANMYSON ($57.42 in chips)
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+Seat 6 - XCENTRICITY ($42.90 in chips)
+Seat 7 - IONABILL ($106 in chips)
+Seat 8 - LAVIZ ($24.73 in chips)
+MAGELA_ - Posts small blind $0.25
+XEXPO - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [8h Kc] 
+TUMTUM972 - Calls $0.50
+AIDANMYSON - Folds
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Folds
+POKR_WIZ - Folds
+MAGELA_ - Folds
+XEXPO - Checks
+*** FLOP *** [Ks Qs Ad]
+XEXPO - Checks
+TUMTUM972 - Checks
+*** TURN *** [Ks Qs Ad] [7h]
+XEXPO - Checks
+TUMTUM972 - Checks
+*** RIVER *** [Ks Qs Ad 7h] [2c]
+XEXPO - Checks
+TUMTUM972 - Checks
+*** SHOW DOWN ***
+XEXPO - Shows [9s 4s] (ace high) 
+TUMTUM972 - Shows [7c 9c] (One pair, sevens) 
+TUMTUM972 Collects $1.20 from main pot
+*** SUMMARY ***
+Total Pot($1.25) | Rake ($0.05)
+Board [Ks Qs Ad 7h 2c]
+Seat 1: MAGELA_ (small blind) Folded on the POCKET CARDS
+Seat 2: XEXPO (big blind) HI:lost with ace high [9s 4s - B:Ad,B:Ks,B:Qs,P:9s,B:7h] 
+Seat 3: TUMTUM972 won Total ($1.20) HI:($1.20) with One pair, sevens [7c 9c - B:7h,P:7c,B:Ad,B:Ks,B:Qs] 
+Seat 4: AIDANMYSON Folded on the POCKET CARDS
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL Folded on the POCKET CARDS
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ (dealer) Folded on the POCKET CARDS
+
+
+Stage #1323655130: Holdem  No Limit $0.50 - 2009-03-20 11:26:54 (ET)
+Table: Seven Mile (Real Money) Seat #1 is the dealer
+Seat 1 - MAGELA_ ($11.20 in chips)
+Seat 2 - XEXPO ($43.22 in chips)
+Seat 3 - TUMTUM972 ($53.85 in chips)
+Seat 4 - AIDANMYSON ($57.42 in chips)
+Seat 5 - OSCARFISH21 ($19.75 in chips)
+Seat 6 - XCENTRICITY ($42.90 in chips)
+Seat 7 - IONABILL ($106 in chips)
+Seat 8 - LAVIZ ($24.73 in chips)
+Seat 9 - POKR_WIZ ($96.45 in chips)
+XEXPO - Posts small blind $0.25
+TUMTUM972 - Posts big blind $0.50
+*** POCKET CARDS ***
+Dealt to POKR_WIZ [3h Ah] 
+AIDANMYSON - Raises $1.75 to $1.75
+OSCARFISH21 - Folds
+XCENTRICITY - Folds
+IONABILL - Folds
+LAVIZ - Folds
+POKR_WIZ - Calls $1.75
+MAGELA_ - Folds
+XEXPO - Folds
+TUMTUM972 - Folds
+*** FLOP *** [Qd As Qs]
+AIDANMYSON - Checks
+POKR_WIZ - Bets $2.50
+AIDANMYSON - Folds (Fold & Show [Kc Jc]) 
+POKR_WIZ - returned ($2.50) : not called
+*** SHOW DOWN ***
+POKR_WIZ - Does not show
+POKR_WIZ Collects $4.05 from main pot
+*** SUMMARY ***
+Total Pot($4.25) | Rake ($0.20)
+Board [Qd As Qs]
+Seat 1: MAGELA_ (dealer) Folded on the POCKET CARDS
+Seat 2: XEXPO (small blind) Folded on the POCKET CARDS
+Seat 3: TUMTUM972 (big blind) Folded on the POCKET CARDS
+Seat 4: AIDANMYSON Folded on the FLOP
+Seat 5: OSCARFISH21 Folded on the POCKET CARDS
+Seat 6: XCENTRICITY Folded on the POCKET CARDS
+Seat 7: IONABILL Folded on the POCKET CARDS
+Seat 8: LAVIZ Folded on the POCKET CARDS
+Seat 9: POKR_WIZ collected Total ($4.05) HI:($4.05)  [Does not show] 
+
