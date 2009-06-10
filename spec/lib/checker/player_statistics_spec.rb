@@ -116,7 +116,7 @@ TEST = [
   }
 ]
 
-RESULT = {
+PS_RESULT = {
   "andy" => {
     :t_hands => 3,
     :t_vpip => 3,
@@ -182,7 +182,7 @@ end
 def should_correctly_aggregate(reports, stats = [])
   reports.keys.each do |each_player|
     stats.each do |each_stat|
-      reports.should AggregateTo.new(each_player, each_stat, RESULT[each_player][each_stat])
+      reports.should AggregateTo.new(each_player, each_stat, PS_RESULT[each_player][each_stat])
     end 
   end
 end
