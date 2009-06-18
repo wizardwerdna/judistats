@@ -23,6 +23,8 @@ describe PokerstarsHandHistoryParser, "when parsing structural matter" do
       :street => :prelude
     )
     @parser.parse("PokerStars Game #21650436825: Tournament #117620218, $10+$1 Hold'em No Limit - Level I (10/20) - 2008/10/31 17:25:42 ET")
+    puts 'foo'
+    puts @stats.report_hand_information
   end
   
   it "should parse a cash game header" do

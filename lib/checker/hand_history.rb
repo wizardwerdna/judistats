@@ -24,6 +24,7 @@ class HandHistory
         raise "#{@source}:#{position}: #{e.message}"
       end
     end
+    @stats.update_hand :session_filename => source, :starting_at => position
     @parsed = true
   end
   

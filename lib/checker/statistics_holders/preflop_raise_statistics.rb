@@ -5,6 +5,7 @@ class PreflopRaiseStatistics < StatisticsHolder
     super handstatistics
     @pfr_opportunity = {}
     @pfr_opportunity_taken = {}
+    @pfr_size_in_bb = {}
   end
   
   def pfr_opportunity?(screen_name)

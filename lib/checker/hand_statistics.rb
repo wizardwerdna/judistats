@@ -75,16 +75,20 @@ class HandStatistics
     @street
   end
   
-  def report(player)
+  def report_player(player)
     result = {}
     @statistics_holders.each {|each| result.merge!(each.report(player))}
     result
   end
-  
+    
   def reports
     result = {}
-    players.each{|each| result[each] = report(each)}
+    players.each{|each| result[each] = report_player(each)}
     result
+  end
+  
+  def report_hand_information
+    @hand_information
   end
   
   def register_player(player)

@@ -645,7 +645,7 @@ describe HandStatistics, "when measuring c-bets" do
     register_check @sb
     register_check @bb
     @stats.should be_cbet_opportunity(@bb[:screen_name])
-    @stats.should be_cbet_opportunity_taken(@bb[:screen_name])
+    @stats.should_not be_cbet_opportunity_taken(@bb[:screen_name])
     @stats.should_not be_cbet_opportunity(@button[:screen_name])
     @stats.should_not be_cbet_opportunity(@sb[:screen_name])
   end
@@ -655,8 +655,9 @@ describe HandStatistics, "when measuring c-bets" do
     register_call @bb, 5
     register_street :flop
     register_check @sb
+    register_check @bb
     @stats.should be_cbet_opportunity(@sb[:screen_name])
-    @stats.should be_cbet_opportunity_taken(@sb[:screen_name])
+    @stats.should_not be_cbet_opportunity_taken(@sb[:screen_name])
     @stats.should_not be_cbet_opportunity(@button[:screen_name])
     @stats.should_not be_cbet_opportunity(@bb[:screen_name])
   end

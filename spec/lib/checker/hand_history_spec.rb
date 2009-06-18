@@ -255,8 +255,8 @@ describe HandHistory, "after valid parsing" do
   end
   
   it "should return accurate statistics after parsing a valid hand record" do
-    puts @goodhh.reports.inspect
-    puts RESULT.inspect
+    # puts @goodhh.reports.inspect
+    # puts RESULT.inspect
     @goodhh.reports.should comply_with(RESULT)
   end
   

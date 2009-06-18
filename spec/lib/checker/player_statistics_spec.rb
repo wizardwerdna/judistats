@@ -211,6 +211,7 @@ describe PlayerStatistics, "when aggregating statistics" do
   it "should correctly aggregate aggression for each player" do
     should_correctly_aggregate @reports, [:t_preflop_passive, :t_preflop_aggressive, :t_postflop_passive, :t_postflop_aggressive]
   end
+  
   it 'should correctly aggregate blind attack statistics' do
     should_correctly_aggregate @reports, [:t_blind_attack_opportunity, :t_blind_attack_opportunity_taken, :t_blind_defense_opportunity, :t_blind_defense_opportunity_taken]
   end

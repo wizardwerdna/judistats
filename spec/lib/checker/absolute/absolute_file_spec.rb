@@ -1,6 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../../../lib/checker/hand_history')
-require File.expand_path(File.dirname(__FILE__) + '/../../../lib/checker/absolute_file')
+require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../../../../lib/checker/hand_history')
+require File.expand_path(File.dirname(__FILE__) + '/../../../../lib/checker/absolute_file')
 
 describe AbsoluteFile, "when opened on an empty file" do
   it "should complain" do

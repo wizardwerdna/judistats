@@ -15,7 +15,7 @@ class ContinuationBetStatistics < StatisticsHolder
   end
   
   def cbet_opportunity_taken?(screen_name, street = :flop)
-    cbet_opportunity?(screen_name) && @first_aggression_opportunity[street][screen_name]
+    cbet_opportunity?(screen_name) && @first_aggression_opportunity_taken[street][screen_name]
   end
   
   def report(screen_name)
