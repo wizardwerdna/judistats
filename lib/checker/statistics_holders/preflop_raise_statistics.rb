@@ -1,4 +1,3 @@
-
 class PreflopRaiseStatistics < StatisticsHolder
 
   def initialize handstatistics

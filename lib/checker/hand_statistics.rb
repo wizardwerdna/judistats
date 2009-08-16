@@ -1,26 +1,42 @@
 require 'Forwardable'
 require File.expand_path(File.dirname(__FILE__) + "/hand_constants")
+require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/statistics_holder")
+# Dir[File.dirname(__FILE__) + "/statistics_holders/*"].each {|filename| require File.expand_path(filename)}
+
+def camelize(lower_case_and_underscored_word)
+  lower_case_and_underscored_word.to_s.gsub(/\/(.?)/) { "::" + $1.upcase }.gsub(/(^|_)(.)/) { $2.upcase }
+end
+
+def constantize(camel_cased_word)
+  unless /\A(?:::)?([A-Z]\w*(?:::[A-Z]\w*)*)\z/ =~ camel_cased_word
+    raise NameError, "#{camel_cased_word.inspect} is not a valid constant name!"
+  end
+    Object.module_eval("::#{$1}", __FILE__, __LINE__)
+end
 
 class HandStatistics
   extend Forwardable
   include HandConstants
   
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/statistics_holder")
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/blind_attack_statistics")
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/continuation_bet_statistics")
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/cash_statistics")
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/preflop_raise_statistics")
-  require File.expand_path(File.dirname(__FILE__) + "/statistics_holders/aggression_statistics")
     
   attr_accessor :button
   attr_reader :player_hashes, :statistics_holders
 
-  def_delegators :@blind_attack_statistics_holder,
-    :blind_attack_opportunity?, :blind_attack_opportunity_taken?, :blind_defense_opportunity?, :blind_defense_opportunity_taken?
-  def_delegators :@continuation_bet_statistics_holder, :cbet_opportunity?, :cbet_opportunity_taken?
-  def_delegators :@cash_statistics_holder, :posted, :paid, :won, :cards
-  def_delegators :@aggression_statistics_holder, :preflop_passive, :preflop_aggressive, :postflop_passive, :postflop_aggressive
-  def_delegators :@preflop_raise_statistics_holder, :pfr_opportunity?, :pfr_opportunity_taken?
+  def self.extend_with_statistics_holder(filename)
+    short_name = File.basename(filename).gsub(".rb","")
+    unless short_name == "statistics_holder"
+      require filename
+      klass = constantize(camelize(short_name))
+      ivar_symbol = ("@" + short_name).to_sym
+      @@hand_stat_tables << [ivar_symbol, klass]
+      def_delegators ivar_symbol, *klass.exposed_methods
+    end
+  end
+
+  @@hand_stat_tables ||= []
+  Dir[File.dirname(__FILE__) + "/statistics_holders/*"].each do |filename|
+    extend_with_statistics_holder(File.expand_path(filename))
+  end
 
   def initialize
     @hand_information = {}
@@ -207,13 +223,11 @@ class HandStatistics
   
   def initialize_statistics
     @last_state = nil
-    @statistics_holders = [
-      @blind_attack_statistics_holder = BlindAttackStatistics.new(self),
-      @cash_statistics_holder = CashStatistics.new(self),
-      @continuation_bet_statistics_holder = ContinuationBetStatistics.new(self),
-      @aggression_statistics_holder = AggressionStatistics.new(self),
-      @preflop_raise_statistics_holder = PreflopRaiseStatistics.new(self)
-    ]
+    
+    @statistics_holders = []
+    @@hand_stat_tables.each do |pair|
+      @statistics_holders << instance_variable_set(pair[0], pair[1].new(self))
+    end
     street_transition(:prelude)
   end
 
@@ -232,3 +246,5 @@ class HandStatistics
     @statistics_holders.each {|each| each.apply_action action, @street}
   end
 end
+
+HandStatistics.new

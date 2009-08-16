@@ -32,6 +32,11 @@ class AggressionStatistics < StatisticsHolder
       :postflop_aggressive => postflop_aggressive(screen_name)
     }
   end
+  
+  def migration_segment
+    return <<-FOO
+    FOO
+  end
 
   def register_player screen_name, street
     @preflop_passive[screen_name] = 0

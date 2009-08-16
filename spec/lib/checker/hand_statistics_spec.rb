@@ -163,8 +163,11 @@ describe HandStatistics, "when reporting statistics" do
     @stats.register_player @seat6 = next_sample_player(:seat => 6, :screen_name => "seat6")
     @stats.register_player @seat8 = next_sample_player(:seat => 8, :screen_name => "seat8")
     @statistics_holders = @stats.statistics_holders
-    @blind_attack_statistics_holder, @cash_statistics_holder, @continuation_bet_statistics_holder, 
-      @aggression_statistics_holder, @preflop_raise_statistics_holder = *@stats.statistics_holders # highly tied to the code
+    @blind_attack_statistics_holder = @stats.statistics_holders.find{|each| each.is_a? BlindAttackStatistics}
+    @cash_statistics_holder = @stats.statistics_holders.find{|each| each.is_a? CashStatistics}
+    @continuation_bet_statistics_holder = @stats.statistics_holders.find{|each| each.is_a? ContinuationBetStatistics}
+    @aggression_statistics_holder = @stats.statistics_holders.find{|each| each.is_a? AggressionStatistics}
+    @preflop_raise_statistics_holder = @stats.statistics_holders.find{|each| each.is_a? PreflopRaiseStatistics}
     @reports = {}
   end
 

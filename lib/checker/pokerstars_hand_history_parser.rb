@@ -45,6 +45,8 @@ class PokerstarsHandHistoryParser
         @stats.update_hand :name => "PS#{$1}", :description=> "#{$2}, #{$3} #{$4}", :tournament=> $2, :sb=> $6.to_d, :bb=> $7.to_d, :played_at=> Time.parse($8), :street => :prelude
       when /PokerStars Game #([0-9]+): +([^(]*) \((#{CASH})\/(#{CASH})\) - (.*)$/
         @stats.update_hand :name => "PS#{$1}", :description=> "#{$2} (#{$3}/#{$4})", :tournament=> nil, :sb=> cash_to_d($3), :bb=> cash_to_d($4), :played_at=> Time.parse($5), :street => :prelude
+      when /PokerStars Game #([0-9]+): +([^(]*) \((#{CASH})\/(#{CASH}) USD\) - (.*)$/
+        @stats.update_hand :name => "PS#{$1}", :description=> "#{$2} (#{$3}/#{$4})", :tournament=> nil, :sb=> cash_to_d($3), :bb=> cash_to_d($4), :played_at=> Time.parse($6), :street => :prelude
       when /\*\*\* HOLE CARDS \*\*\*/
         @stats.register_button(@stats.button)
         @stats.update_hand :street => :preflop

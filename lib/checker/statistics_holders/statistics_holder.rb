@@ -3,6 +3,10 @@ class StatisticsHolder
     @hand_statistics = handstatistics
   end
   
+  def self.exposed_methods
+    self.public_instance_methods - StatisticsHolder.public_instance_methods
+  end
+  
   def report(screen_name)
     {}
   end

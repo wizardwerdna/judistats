@@ -1,8 +1,5 @@
 module HandConstants
   HAND_INFORMATION_KEYS = [:session_filename, :starting_at, :name, :description, :sb, :bb, :board, :total_pot, :rake, :played_at, :tournament]
-  PLAYER_INFORMATION_KEYS = [ :hand_name, :player_screen_name, :seat, :position, :cards, :cards_class, 
-                              :vpip, :pfrp, :preflop_aggressive, :preflop_passive, :postflop_aggressive, :postflop_passive,
-                              :posted, :bet, :cashed, :net, :net_in_bb]
 
   HAND_RECORD_INCOMPLETE_MESSAGE = "hand record is incomplete"
   PLAYER_RECORDS_NO_PLAYER_REGISTERED = "no players have been registered"
